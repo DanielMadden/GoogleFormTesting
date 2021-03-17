@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+  <script>
+    function start() {
+      // 2. Initialize the JavaScript client library.
+      gapi.client.init({
+        'apiKey': 'AIzaSyCeDdnbppYQMFDcfZcJlGDNtCC51RLR_ZE',
+        // clientId and scope are optional if auth is not required.
+        // 'clientId': '3647470477-t00omi3s2bqdd0v4ga2k29kj131rmdm2.apps.googleusercontent.com',
+        // 'scope': 'profile',
+      }).then(function () {
+        // 3. Initialize and make the API request.
+        return gapi.client.request({
+          'path': 'https://sheets.googleapis.com/v4/spreadsheets/1N3hic4Pc3DQbvjQbZcuLho57of0IG47d_iARtjub5cM'
+        })
+      }).then(function (response) {
+        console.log(response.result);
+      }, function (reason) {
+        console.log('Error: ' + reason.result.error.message);
+      });
+    };
+    // 1. Load the JavaScript client library.
+    gapi.load('client', start);
+  </script>
+</body>
+
+</html>
